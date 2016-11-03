@@ -37,6 +37,7 @@ public class MCVector implements MCVectorInterface {
     }
     System.arraycopy(data, index, data, index + 1, numItems - index);
     data[index] = item;
+    numItems++;
   }
 
   public void prepend(Object item) {
@@ -51,14 +52,19 @@ public class MCVector implements MCVectorInterface {
 
   public void delete(int index) throws new ListIndexOutOfBoundsException{
     if(index >= 0 || index < numItems - 1) {
-      
+      System.arraycopy(data, index + 1, data, index, numItems - index);
+      numItems--;
     } else {
       throw new ListIndexOutOfBoundsException("ListIndexOutOfBoundsException at delete");
     }
   }
 
   public void remove(Object value) {
-
+    int index = find(value);
+    while(index != -1) {
+      delete(index);
+      index = find(value);
+    }
   }
 
   public int find(Object value) {
