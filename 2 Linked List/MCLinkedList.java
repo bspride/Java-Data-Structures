@@ -93,23 +93,38 @@ public class MCLinkedList<T> implements MCLinkedListInterface<T> {
   }
 
   public void insert(int index, T value) {
-    
+    Node newNode = Node(value);
+    Node prevNode = find(index);
+    newNode.setNext(prevNode.getNext());
+    prevNode.setNext(newNode);
+    numItems++;
   }
 
   public void erase(int index) {
-
+    Node prevNode = find(index - 1);
+    prevNode.setNext(prevNode.getNext().getNext());
+    numItems--;
   }
 
-  public T value_n_from_end(n) {
-
+  public T value_n_from_end(int n) {
+    return find(numItems - n).getItem();
   }
 
   public void reverse() {
+    Node reversed = null;
+    Node current = head;
 
+    while(current != null) {
+      Node next = current.getNext();
+      current.next = reversed;
+      reversed = current;
+      current = next;
+    }
+    head = reversed;
   }
 
   public void remove_value(T value) {
-
+    
   }
 
   private Node<T> find(int index) {
