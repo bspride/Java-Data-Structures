@@ -1,7 +1,7 @@
 public interface MCVectorInterface {
   public int size();
   public boolean isEmpty();
-  public Object get(index)
+  public Object get(int index)
                   throws ListIndexOutOfBoundsException;
   public void append(Object item);
   public void insert(Object item, int index);
