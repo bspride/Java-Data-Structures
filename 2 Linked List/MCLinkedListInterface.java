@@ -11,7 +11,7 @@ public interface MCLinkedListInterface<T> {
   public T back();
   public void insert(int index, T value);
   public void erase(int index);
-  public T value_n_from_end(n);
+  public T value_n_from_end(int n);
   public void reverse();
   public void remove_value(T value);
 }
