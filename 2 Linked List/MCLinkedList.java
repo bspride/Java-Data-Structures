@@ -124,7 +124,20 @@ public class MCLinkedList<T> implements MCLinkedListInterface<T> {
   }
 
   public void remove_value(T value) {
-    
+    Node prev = null;
+    Node curr = head;
+    while(curr != null) {
+      if(curr.getItem() == value) {
+        if(prev == null) {
+          head = curr.getNext();
+        } else {
+          prev.setNext(curr.getNext());
+        }
+      } else {
+        prev = curr;
+        curr = curr.getNext();
+      } 
+    }
   }
 
   private Node<T> find(int index) {
