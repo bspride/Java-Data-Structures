@@ -19,7 +19,7 @@ public class QueueLinkedList<T> implements IQueueLinkedList<T> {
 	}
 
 	@Override
-	public boolean empty() {
+	public boolean isEmpty() {
 		return data.isEmpty();
 	}
 

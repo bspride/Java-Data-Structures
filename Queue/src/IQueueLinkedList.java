@@ -9,5 +9,5 @@
 public interface IQueueLinkedList<T> {
 	public void enqueue(T value);
 	public T dequeue();
-	public boolean empty();
+	public boolean isEmpty();
 }
