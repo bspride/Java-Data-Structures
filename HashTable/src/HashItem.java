@@ -31,6 +31,9 @@ public class HashItem<T1, T2> implements IHashItem<T1, T2> {
 	public T2 getValue() {
 		return this.value;
 	}
-	
-	
+
+	@Override
+	public void setDeleted() {
+		this.flag = 1;
+	}
 }
