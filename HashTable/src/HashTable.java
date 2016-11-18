@@ -7,12 +7,12 @@
  *
  */
 public class HashTable<T1, T2> implements IHashTable<T1, T2> {
-	private Object[] data;
+	private IHashItem[] data;
 	private int capacity;
 	private int size;
 	
 	public HashTable () {
-		data = new Object[capacity];
+		data = new HashItem[capacity];
 		size = 0;
 	}
 	
