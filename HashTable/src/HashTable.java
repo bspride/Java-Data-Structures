@@ -12,7 +12,7 @@ public class HashTable<T1, T2> implements IHashTable<T1, T2> {
 	private int size;
 	
 	public HashTable () {
-		data = new HashItem[capacity];
+		data = new IHashItem[capacity];
 		size = 0;
 	}
 
@@ -88,11 +88,43 @@ public class HashTable<T1, T2> implements IHashTable<T1, T2> {
 	}
 	
 	private void shrink() {
+		this.capacity /= 2;
+		int newSize = 0;
+		IHashItem[] newArray = new IHashItem[this.capacity];
 		
+		for(int i = 0; i < this.data.length; i++) {
+			if(!this.data[i].isDeleted()) {
+				int index = this.hash(this.data[i].getKey());
+				while(this.data[index] != null) {
+					index = (index+1)%this.capacity;
+				}
+				newArray[index] = this.data[i];
+				newSize++;
+			}
+		}
+		
+		this.size = newSize;
+		this.data = newArray;
 	}
 	
 	private void grow() {
+		this.capacity *= 2;
+		int newSize = 0;
+		IHashItem[] newArray = new IHashItem[this.capacity];
 		
+		for(int i = 0; i < this.data.length; i++) {
+			if(!this.data[i].isDeleted()) {
+				int index = this.hash(this.data[i].getKey());
+				while(this.data[index] != null) {
+					index = (index+1)%this.capacity;
+				}
+				newArray[index] = this.data[i];
+				newSize++;
+			}
+		}
+		
+		this.size = newSize;
+		this.data = newArray;
 	}
 
 }
