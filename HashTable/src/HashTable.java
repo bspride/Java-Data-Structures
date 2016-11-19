@@ -115,7 +115,7 @@ public class HashTable<T1, T2> implements IHashTable<T1, T2> {
 		for(int i = 0; i < this.data.length; i++) {
 			if(!this.data[i].isDeleted()) {
 				int index = this.hash(this.data[i].getKey());
-				while(this.data[index] != null) {
+				while(newArray[index] != null) {
 					index = (index+1)%this.capacity;
 				}
 				newArray[index] = this.data[i];
